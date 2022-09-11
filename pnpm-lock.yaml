@@ -35,7 +35,7 @@ specifiers:
   prettier: ^2.3.2
   prisma: ^4.3.1
   reflect-metadata: ^0.1.13
-  schemas-cli: 1.0.1
+  schemas-cli: 1.0.2
   supertest: ^6.2.4
   ts-jest: ^28.0.8
   ts-loader: ^9.2.3
@@ -86,7 +86,7 @@ devDependencies:
   jest: 29.0.2_ejkjvqd5vfl2fzeatolpv5zxaa
   prettier: 2.7.1
   prisma: 4.3.1
-  schemas-cli: 1.0.1
+  schemas-cli: 1.0.2
   supertest: 6.2.4
   ts-jest: 28.0.8_74nigwnin434tmkkvhnzwo7noy
   ts-loader: 9.3.1_xnp4kzegbjokq62cajex2ovgkm
@@ -4525,8 +4525,8 @@ packages:
       ajv: 6.12.6
       ajv-keywords: 3.5.2_ajv@6.12.6
 
-  /schemas-cli/1.0.1:
-    resolution: {integrity: sha512-YS3OkrNrMseKoLNEO3Hck83x2IB/nxxfy6/TK1jiBafMnlh7V8I4jPALnOnAeiO2m0xkApucmMTw+OVTSERe/A==}
+  /schemas-cli/1.0.2:
+    resolution: {integrity: sha512-3Tv4+8vn31VXUbIHtmdKNjO33xbtn79z7NWXOgH+84z+ZvkAr4oREo5/OtMzW45JLfh0d8/JmMKaPqs98xgPjw==}
     hasBin: true
     dependencies:
       gluegun: 5.1.2
