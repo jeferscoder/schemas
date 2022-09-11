@@ -6,8 +6,8 @@ export const handler = (
   res: Response,
   next: NextFunction,
 ) => {
-  // HTTPHandler
-  if (err.name === 'HTTPHandler') {
+  // Handling
+  if (err.name === 'HandlingError') {
     const obj = JSON.parse(err.message);
     res.status(obj.status).send(err.message);
   }

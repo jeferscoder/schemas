@@ -15,8 +15,8 @@
       "@modules/*":["src/app/modules/*"],
       "@middlewares/*":["./src/app/middlewares/*"],
       "@models/*":["./src/app/models/*"],
-      "@services/*":["./src/services/*"],
-      "@utils/*":["./src/utils/*"]
+      "@services/*":["./src/app/services/*"],
+      "@utils/*":["./src/app/utils/*"]
     },
     "incremental": true,
     "skipLibCheck": true,

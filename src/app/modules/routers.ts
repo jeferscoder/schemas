@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { schemas } from './schemas/router';
+
+import { schemas } from '@modules/schemas/router';
 
 const routers = Router();
 

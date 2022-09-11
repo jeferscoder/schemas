@@ -1,23 +1,24 @@
 import { saveDTO, updateDTO } from './schemas.dto';
+import * as repository from './schemas.repository';
 
-const save = (dto: saveDTO) => {
-  return 'save';
+const save = async (dto: saveDTO) => {
+  return await repository.save(dto);
 };
 
-const findAll = () => {
-  return 'findAll';
+const findAll = async () => {
+  return await repository.findAll();
 };
 
-const findOne = (id: string | number) => {
-  return 'findOne';
+const findOne = async (id: string) => {
+  return await repository.findOne(id);
 };
 
-const update = (id: string | number, dto: updateDTO) => {
-  return 'update';
+const update = async (id: string, dto: updateDTO) => {
+  return await repository.update(id, dto);
 };
 
-const destroy = (id: string | number) => {
-  return 'destroy';
+const destroy = async (id: string) => {
+  return await repository.destroy(id);
 };
 
 export { save, findAll, findOne, update, destroy };

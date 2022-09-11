@@ -1,23 +1,24 @@
-import {} from './schemas.model';
+import { saveDTO, updateDTO } from './schemas.dto';
+import { Schemas } from './schemas.model';
 
-const save = () => {
-  return 'save';
+const save = async (data: saveDTO) => {
+  return await Schemas.create({ data });
 };
 
-const findAll = () => {
-  return 'findAll';
+const findAll = async () => {
+  return await Schemas.findMany();
 };
 
-const findOne = (id: string | number) => {
-  return 'findOne';
+const findOne = async (id: string) => {
+  return await Schemas.findUnique({ where: { id } });
 };
 
-const update = (id: string | number) => {
-  return 'update';
+const update = async (id: string, data: updateDTO) => {
+  return await Schemas.updateMany({ where: { id }, data });
 };
 
-const destroy = (id: string | number) => {
-  return 'destroy';
+const destroy = async (id: string) => {
+  return await Schemas.delete({ where: { id } });
 };
 
 export { save, findAll, findOne, update, destroy };
