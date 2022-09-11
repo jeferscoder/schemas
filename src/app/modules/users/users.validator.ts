@@ -7,7 +7,11 @@ const save = async (
   next: NextFunction,
 ) => {
   try {
-    const Schema = object({});
+    const Schema = object({
+      username: string().required(),
+      email: string().required(),
+      password: string().required(),
+    });
     await Schema.validate(body);
     next();
   } catch (error) {
@@ -21,7 +25,11 @@ const update = async (
   next: NextFunction,
 ) => {
   try {
-    const Schema = object({});
+    const Schema = object({
+      username: string(),
+      email: string(),
+      password: string(),
+    });
     await Schema.validate(body);
     next();
   } catch (error) {
@@ -36,7 +44,7 @@ const params = async (
 ) => {
   try {
     const Schema = object({
-      id: string(),
+      id: string().uuid(),
     });
     await Schema.validate(params);
     next();

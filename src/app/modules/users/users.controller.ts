@@ -1,61 +1,65 @@
 import { NextFunction, Request, Response } from 'express';
-import * as services from './schemas.service';
+import * as services from './users.service';
 
-const save = ({ body }: Request, response: Response, next: NextFunction) => {
+const save = async (
+  { body }: Request,
+  response: Response,
+  next: NextFunction,
+) => {
   try {
-    const entity = services.save(body);
+    const entity = await services.save(body);
     response.status(201).json(entity);
   } catch (error) {
     next(error);
   }
 };
 
-const findAll = ({}: Request, response: Response, next: NextFunction) => {
+const findAll = async ({}: Request, response: Response, next: NextFunction) => {
   try {
-    const entity = services.findAll();
+    const entity = await services.findAll();
     response.status(200).json(entity);
   } catch (error) {
     next(error);
   }
 };
 
-const findOne = (
+const findOne = async (
   { params }: Request,
   response: Response,
   next: NextFunction,
 ) => {
   try {
     const { id } = params;
-    const entity = services.findOne(id);
+    const entity = await services.findOne(id);
     response.status(200).json(entity);
   } catch (error) {
     next(error);
   }
 };
 
-const update = (
+const update = async (
   { body, params }: Request,
   response: Response,
   next: NextFunction,
 ) => {
   try {
     const { id } = params;
-    const entity = services.update(id, body);
-    response.status(200).json(entity);
+    await services.update(id, body);
+    response.status(204).json();
   } catch (error) {
     next(error);
   }
 };
 
-const destroy = (
+const destroy = async (
   { params }: Request,
   response: Response,
   next: NextFunction,
 ) => {
   try {
     const { id } = params;
-    const entity = services.destroy(id);
-    response.status(200).json(entity);
+    await services.destroy(id);
+    response.status(204).json();
   } catch (error) {
     next(error);
   }
