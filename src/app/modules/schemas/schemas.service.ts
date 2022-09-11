@@ -1,4 +1,6 @@
-const save = () => {
+import { saveDTO, updateDTO } from './schemas.dto';
+
+const save = (dto: saveDTO) => {
   return 'save';
 };
 
@@ -10,7 +12,7 @@ const findOne = (id: string | number) => {
   return 'findOne';
 };
 
-const update = (id: string | number) => {
+const update = (id: string | number, dto: updateDTO) => {
   return 'update';
 };
 

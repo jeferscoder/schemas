@@ -3,7 +3,7 @@ import * as services from './schemas.service';
 
 const save = ({ body }: Request, response: Response, next: NextFunction) => {
   try {
-    const entity = services.save();
+    const entity = services.save(body);
     response.status(201).json(entity);
   } catch (error) {
     next(error);
@@ -40,7 +40,7 @@ const update = (
 ) => {
   try {
     const { id } = params as { id: string | number };
-    const entity = services.update(id);
+    const entity = services.update(id, body);
     response.status(200).json(entity);
   } catch (error) {
     next(error);
@@ -54,7 +54,7 @@ const destroy = (
 ) => {
   try {
     const { id } = params as { id: string | number };
-    const entity = services.update(id);
+    const entity = services.destroy(id);
     response.status(200).json(entity);
   } catch (error) {
     next(error);
