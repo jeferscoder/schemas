@@ -16,7 +16,7 @@
       "@middlewares/*":["./src/app/middlewares/*"],
       "@models/*":["./src/app/models/*"],
       "@services/*":["./src/app/services/*"],
-      "@utils/*":["./src/app/utils/*"]
+      "@utils/*":["src/utils/*"]
     },
     "incremental": true,
     "skipLibCheck": true,
