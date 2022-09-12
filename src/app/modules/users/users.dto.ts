@@ -3,6 +3,7 @@ export interface saveDTO {
   username: string;
   email: string;
   password: string;
+  permissions: any[];
 }
 
 export type updateDTO = Partial<saveDTO>;

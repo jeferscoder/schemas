@@ -11,6 +11,7 @@ const save = async (
       username: string().required(),
       email: string().required(),
       password: string().required(),
+      permissions: array(),
     });
     await Schema.validate(body);
     next();
@@ -29,6 +30,7 @@ const update = async (
       username: string(),
       email: string(),
       password: string(),
+      permissions: array(),
     });
     await Schema.validate(body);
     next();
