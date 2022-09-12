@@ -2,10 +2,11 @@ import { Handling } from '@utils/Handling';
 import { saveDTO, updateDTO } from './users.dto';
 import * as repository from './users.repository';
 import * as permissionsRepository from '@modules/permissions/permissions.repository';
-
+import * as rolesRepository from '@modules/roles/roles.repository';
 const save = async (dto: saveDTO) => {
   const permissions = await permissionsRepository.findInTypes(dto.permissions);
-  return await repository.save({ ...dto, permissions });
+  const roles = await rolesRepository.findInTypes(dto.roles);
+  return await repository.save({ ...dto, permissions, roles });
 };
 
 const findAll = async () => {
@@ -22,7 +23,8 @@ const update = async (id: string, dto: updateDTO) => {
   const user = await repository.findOne(id);
   if (!user) throw new Handling('user does not exists', 404);
   const permissions = await permissionsRepository.findInTypes(dto.permissions);
-  return await repository.update(id, { ...dto, permissions });
+  const roles = await rolesRepository.findInTypes(dto.roles);
+  return await repository.update(id, { ...dto, permissions, roles });
 };
 
 const destroy = async (id: string) => {

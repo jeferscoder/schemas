@@ -3,7 +3,11 @@ import { Users } from './users.model';
 
 const save = async (data: saveDTO) => {
   return await Users.create({
-    data: { ...data, permissions: { connect: data.permissions } },
+    data: {
+      ...data,
+      roles: { connect: data.roles },
+      permissions: { connect: data.permissions },
+    },
   });
 };
 
@@ -15,12 +19,14 @@ const findAll = async () => {
       username: true,
       email: true,
       permissions: { select: { type: true } },
+      roles: { select: { type: true } },
     },
   });
   return users.map((user) => {
     return {
       ...user,
       permissions: user.permissions.map(({ type }) => type),
+      roles: user.roles.map(({ type }) => type),
     };
   });
 };
@@ -32,11 +38,19 @@ const findOne = async (id: string) => {
 const findByPk = async (id: string) => {
   const user = await Users.findUnique({
     where: { id },
-    include: { permissions: { select: { type: true } } },
+    select: {
+      id: true,
+      avatar: true,
+      username: true,
+      email: true,
+      roles: { select: { type: true } },
+      permissions: { select: { type: true } },
+    },
   });
   return {
     ...user,
     permissions: user.permissions.map(({ type }) => type),
+    roles: user.roles.map(({ type }) => type),
   };
 };
 
@@ -47,7 +61,11 @@ const findByEmail = async (email: string) => {
 const update = async (id: string, data: updateDTO) => {
   return await Users.update({
     where: { id },
-    data: { ...data, permissions: { set: data.permissions } },
+    data: {
+      ...data,
+      roles: { set: data.roles },
+      permissions: { set: data.permissions },
+    },
   });
 };
 

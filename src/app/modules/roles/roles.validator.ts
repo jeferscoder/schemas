@@ -8,11 +8,7 @@ const save = async (
 ) => {
   try {
     const Schema = object({
-      username: string().required(),
-      email: string().required(),
-      password: string().required(),
-      permissions: array(),
-      roles: array(),
+      type: string().required(),
     });
     await Schema.validate(body);
     next();
@@ -28,11 +24,7 @@ const update = async (
 ) => {
   try {
     const Schema = object({
-      username: string(),
-      email: string(),
-      password: string(),
-      permissions: array(),
-      roles: array(),
+      type: string(),
     });
     await Schema.validate(body);
     next();

@@ -17,8 +17,17 @@ model User {
   email       String       @unique() @db.VarChar()
   password    String       @db.VarChar()
   permissions Permission[]
+  roles       Role[]
 
   @@map("users")
+}
+
+model Role {
+  id    String @id @default(uuid()) @db.Uuid
+  type  String @unique() @db.VarChar()
+  users User[]
+
+  @@map("roles")
 }
 
 model Permission {

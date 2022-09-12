@@ -10,7 +10,6 @@ export const can = (permissions: string[]) => {
       if (!check) throw new Handling('user does not exits', 400);
       const user = await userRepository.findByPk(id);
       const exits = user.permissions.some((rol) => permissions.includes(rol));
-      console.log(exits);
       if (!exits)
         throw new Handling(
           "you don't have permission to access this resource",
@@ -23,16 +22,14 @@ export const can = (permissions: string[]) => {
   };
 };
 
-/*
 export const is = (roles: string[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { id } = req.user;
+      const { id } = req.user as { id: string };
+      const check = await userRepository.findOne(id);
+      if (!check) throw new Handling('user does not exits', 400);
       const user = await userRepository.findByPk(id);
-      if (!user) throw new Handling('user does not exits', 400);
-
       const exits = user.roles.some((rol) => roles.includes(rol));
-      console.log(exits);
       if (!exits)
         throw new Handling(
           "you don't have permission to access this resource",
@@ -45,4 +42,3 @@ export const is = (roles: string[]) => {
     }
   };
 };
-*/
