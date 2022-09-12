@@ -37,3 +37,23 @@ model Permission {
 
   @@map("permissions")
 }
+
+model Anime {
+  id       Int      @id @default(autoincrement()) @db.Integer
+  cover    String   @db.VarChar()
+  title    String   @unique @db.VarChar()
+  episodes Int      @db.Integer
+  status   String   @db.VarChar()
+  aired    DateTime @db.Date
+  genres   Genre[]
+
+  @@map("animes")
+}
+
+model Genre {
+  id     Int     @id @default(autoincrement()) @db.Integer
+  name   String  @unique @db.VarChar()
+  animes Anime[]
+
+  @@map("genres")
+}
