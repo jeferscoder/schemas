@@ -10,8 +10,3 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Schema {
-  id String @id @default(uuid()) @db.Uuid
-
-  @@map("schemas")
-}
