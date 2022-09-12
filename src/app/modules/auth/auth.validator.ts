@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { object, string } from 'yup';
 
 export const signin = async (
-  { body }: Request,
+  request: Request,
   response: Response,
   next: NextFunction,
 ) => {
@@ -11,7 +11,8 @@ export const signin = async (
       email: string().email().required(),
       password: string().required(),
     });
-    await Schema.validate(body);
+    const filter = await Schema.validate(request.body);
+    request.filter = filter;
     next();
   } catch (error) {
     next(error);
@@ -19,7 +20,7 @@ export const signin = async (
 };
 
 export const signup = async (
-  { body }: Request,
+  request: Request,
   response: Response,
   next: NextFunction,
 ) => {
@@ -29,7 +30,8 @@ export const signup = async (
       email: string().email().required(),
       password: string().required(),
     });
-    await Schema.validate(body);
+    const filter = await Schema.validate(request.body);
+    request.filter = filter;
     next();
   } catch (error) {
     next(error);

@@ -3,12 +3,12 @@ import * as service from './auth.service';
 
 // signin
 export const signin = async (
-  { body }: Request,
+  { filter }: Request,
   response: Response,
   next: NextFunction,
 ) => {
   try {
-    const entity = await service.signin(body);
+    const entity = await service.signin(filter);
     response.status(200).json(entity);
   } catch (error) {
     next(error);
@@ -16,12 +16,12 @@ export const signin = async (
 };
 
 export const signup = async (
-  { body }: Request,
+  { filter }: Request,
   response: Response,
   next: NextFunction,
 ) => {
   try {
-    const entity = await service.signup(body);
+    const entity = await service.signup(filter);
     response.status(201).json(entity);
   } catch (error) {
     next(error);

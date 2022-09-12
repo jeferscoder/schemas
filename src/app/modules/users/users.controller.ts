@@ -2,12 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import * as services from './users.service';
 
 const save = async (
-  { body }: Request,
+  { filter }: Request,
   response: Response,
   next: NextFunction,
 ) => {
   try {
-    const entity = await services.save(body);
+    const entity = await services.save(filter);
     response.status(201).json(entity);
   } catch (error) {
     next(error);
@@ -38,13 +38,13 @@ const findOne = async (
 };
 
 const update = async (
-  { body, params }: Request,
+  { filter, params }: Request,
   response: Response,
   next: NextFunction,
 ) => {
   try {
     const { id } = params;
-    await services.update(id, body);
+    await services.update(id, filter);
     response.status(204).json();
   } catch (error) {
     next(error);

@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { array, object, string } from 'yup';
+import { array, number, object, string } from 'yup';
 
 const save = async (
-  { body }: Request,
+  request: Request,
   response: Response,
   next: NextFunction,
 ) => {
@@ -14,7 +14,8 @@ const save = async (
       permissions: array(),
       roles: array(),
     });
-    await Schema.validate(body);
+    const filter = await Schema.validate(request.body);
+    request.filter = filter;
     next();
   } catch (error) {
     next(error);
@@ -22,7 +23,7 @@ const save = async (
 };
 
 const update = async (
-  { body }: Request,
+  request: Request,
   response: Response,
   next: NextFunction,
 ) => {
@@ -34,7 +35,8 @@ const update = async (
       permissions: array(),
       roles: array(),
     });
-    await Schema.validate(body);
+    const filter = await Schema.validate(request.body);
+    request.filter = filter;
     next();
   } catch (error) {
     next(error);
