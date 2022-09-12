@@ -18,4 +18,5 @@ server.use(routers);
 // handlers
 server.use(handler);
 
+process.on('SIGTERM', () => process.exit());
 export { server };
