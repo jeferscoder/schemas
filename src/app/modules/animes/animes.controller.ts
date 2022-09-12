@@ -1,13 +1,15 @@
+import cloudinary from '@app/services/cloudinary';
 import { NextFunction, Request, Response } from 'express';
 import * as services from './animes.service';
 
 const save = async (
-  { filter }: Request,
+  { filter, file }: Request,
   response: Response,
   next: NextFunction,
 ) => {
   try {
-    const entity = await services.save(filter);
+    const { url: cover } = await cloudinary(file, 'animes');
+    const entity = await services.save({ ...filter, cover });
     response.status(201).json(entity);
   } catch (error) {
     next(error);

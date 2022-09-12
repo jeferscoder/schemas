@@ -4,7 +4,7 @@ import * as controller from './animes.controller';
 import * as validator from './animes.validator';
 const router = Router();
 
-router.post('/', multer().single('black'), validator.save, controller.save);
+router.post('/', multer().single('cover'), validator.save, controller.save);
 router.get('/', controller.findAll);
 router.get('/:id', validator.params, controller.findOne);
 router.patch('/:id', validator.params, validator.update, controller.update);

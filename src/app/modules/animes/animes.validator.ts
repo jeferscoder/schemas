@@ -8,7 +8,6 @@ const save = async (
 ) => {
   try {
     const Schema = object({
-      cover: string().required(),
       title: string().required(),
       episodes: number().required(),
       status: string().required(),
@@ -30,7 +29,6 @@ const update = async (
 ) => {
   try {
     const Schema = object({
-      cover: string(),
       title: string(),
       episodes: number(),
       status: string(),
